@@ -1,5 +1,5 @@
 import React from 'react'
-import data from '../utils/data'
+import data from '../../../utils/data'
 export const TableBody = () => {
     return (
         <tbody>

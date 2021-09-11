@@ -1,7 +1,7 @@
 import React from 'react'
-import { TableBody } from './TableBody'
-import { TableHeader } from './TableHeader'
-import "../styles/tablestyle.css"
+import { TableBody } from './components/TableBody'
+import { TableHeader } from './components/TableHeader'
+import "../../styles/tablestyle.css"
 export const Table = () => {
     return (
         <table>
