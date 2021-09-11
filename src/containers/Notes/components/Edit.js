@@ -4,7 +4,6 @@ import { Button } from './Button';
 export const Edit = ({ selectedNote, notes = [], setSelectedNote = () => { }, updateNote = () => { }, deleteNote = () => {}}) => {
     const [note, setNote] = useState({})
     useEffect(() => {
-        console.log(notes.find(n => n.createdAt === selectedNote));
         setNote(notes.find(n => n.createdAt === selectedNote))
         return () => {
             setNote([])
