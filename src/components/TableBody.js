@@ -1,16 +1,26 @@
 import React from 'react'
 import data from '../utils/data'
 export const TableBody = () => {
+
     return (
         <tbody>
             {data.currencies.map(currency => (
-                <tr key={currency.exchangeType}>
-                    <td>{currency.exchangeType}</td>
-                    <td>{currency.buy}</td>
-                    <td>{currency.sell}</td>
-                    <td>{currency.diff}</td>
-                </tr>
+                <TableRow
+                    key={currency.exchangeType}
+                    exchangeType={currency.exchangeType}
+                    buy={currency.buy}
+                    sell={currency.sell}
+                    diff={currency.diff}
+                />
             ))}
         </tbody>
     )
+}
+const TableRow = ({ exchangeType, buy, sell, diff }) => {
+    return <tr >
+        <td>{exchangeType}</td>
+        <td>{buy}</td>
+        <td>{sell}</td>
+        <td>{diff}</td>
+    </tr>
 }
