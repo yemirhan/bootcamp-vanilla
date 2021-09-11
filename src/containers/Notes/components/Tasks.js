@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Note } from './Note'
+import { NoteSearch } from './NoteSearch'
 
 export const Tasks = ({ setSelectedNote, notes, selectedNote }) => {
 
@@ -8,7 +9,7 @@ export const Tasks = ({ setSelectedNote, notes, selectedNote }) => {
     return (
         <div className="w-96 bg-white h-screen flex flex-col border-r border-gray-100">
             <div className="w-full px-2 py-1 bg-white">
-                <input type="search" className="w-full border-2 border-gray-200 rounded-lg" value={search} onChange={({ target: { value } }) => setSearch(value)} />
+                <NoteSearch search={search} setSearch={setSearch} />
 
             </div>
 
