@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from './Button';
 
-export const Edit = ({ selectedNote, notes = [], setSelectedNote = () => { }, updateNote = () => { }, deleteNote = () => {}}) => {
+export const Edit = ({ selectedNote, notes = [], setSelectedNote = () => { }, updateNote = () => { }, deleteNote = () => { } }) => {
     const [note, setNote] = useState({})
     useEffect(() => {
-        setNote(notes.find(n => n.createdAt === selectedNote))
+        setNote(selectedNote ? selectedNote : {})
         return () => {
-            setNote([])
+            setNote({})
         }
-    }, [notes, selectedNote])
+    }, [selectedNote])
     if (!note?.createdAt) return <div className="w-full h-screen bg-white flex items-center justify-center">Sol taraftan bir not seçiniz.</div>
     return (
         <div className="w-full h-screen bg-gray-700 flex flex-col">
