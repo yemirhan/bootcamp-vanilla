@@ -2,7 +2,8 @@ const initialState = {
     notes: JSON.parse(localStorage.getItem("notes") || "[]"),
     selectedNote: {},
     appInitialized: false,
-    editOn: false
+    editOn: false,
+    isMenuOpen: true
 }
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -20,6 +21,8 @@ const reducer = (state = initialState, { type, payload }) => {
         case "UPDATE_NOTE":
             localStorage.setItem("notes", JSON.stringify([...payload]))
             return { ...state, notes: [...payload] }
+        case "MENU":
+            return { ...state, isMenuOpen: !state.isMenuOpen }
         default:
             return state
     }
@@ -33,3 +36,4 @@ export const $delete_note = (notes) => ({ type: "DELETE_NOTE", payload: notes })
 export const $select_note = (notes) => ({ type: "NOTE_SELECTED", payload: notes })
 export const $unselect_note = (notes) => ({ type: "NOTE_UNSELECTED", payload: {} })
 export const $update_note = (notes) => ({ type: "UPDATE_NOTE", payload: notes })
+export const $menu = (notes) => ({ type: "MENU" })
