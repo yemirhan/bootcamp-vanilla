@@ -11,6 +11,7 @@ export const Tasks = ({ setSelectedNote, notes, selectedNote }) => {
             <NoteSearch search={search} setSearch={setSearch} />
             {notes
                 .filter(note => note.noteTitle.includes(search))
+                .sort(e => 0- e.createdAt)
                 .map(note => (
                     <Note
                         key={note.createdAt}
