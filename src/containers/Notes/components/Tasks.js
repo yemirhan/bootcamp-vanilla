@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Note } from './Note'
 import { NoteSearch } from './NoteSearch'
 
-export const Tasks = ({ setSelectedNote, notes, selectedNote }) => {
+export const Tasks = ({ setSelectedNote, notes = [], selectedNote }) => {
     const [search, setSearch] = useState("")
 
     return (
