@@ -1,0 +1,16 @@
+* {
+    font-family: Arial, sans-serif;
+
+}
+td {
+    border: 1px solid #333;
+    padding: 0.5em;
+}
+table {
+    border: 1px solid #333;
+}
+thead > tr > * {
+    border: 1px solid #333;
+    padding: 0.5em;
+    color: #000;
+}
