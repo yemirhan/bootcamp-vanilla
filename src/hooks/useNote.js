@@ -11,7 +11,7 @@ export const useNote = () => {
         return () => {
             dispatch($get_notes([]))
         }
-    }, [$notes.appInitialized])
+    }, [])
     const saveNoteToStorage = (n) => {
         localStorage.setItem("notes", JSON.stringify(n))
     }
