@@ -1,26 +1,23 @@
 import React from 'react'
 import data from '../utils/data'
 export const TableBody = () => {
-
     return (
         <tbody>
-            {data.currencies.map(currency => (
+            {data.currencies.map((currency, index) => (
                 <TableRow
-                    key={currency.exchangeType}
-                    exchangeType={currency.exchangeType}
-                    buy={currency.buy}
-                    sell={currency.sell}
-                    diff={currency.diff}
+                    key={index} //Normally, id assume every object in the array would have a unique id
+                    rowData={currency}
+                    rowKeys={["exchangeType",
+                        "buy",
+                        "sell",
+                        "diff"]}
                 />
             ))}
         </tbody>
     )
 }
-const TableRow = ({ exchangeType, buy, sell, diff }) => {
+const TableRow = ({ rowData, rowKeys = [] }) => {
     return <tr >
-        <td>{exchangeType}</td>
-        <td>{buy}</td>
-        <td>{sell}</td>
-        <td>{diff}</td>
+        {rowKeys.map(rKey => <td key={rKey}>{rowData?.[rKey]}</td>)}
     </tr>
 }
