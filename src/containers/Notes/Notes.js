@@ -10,7 +10,7 @@ export const Notes = () => {
     return (
         <div className="flex flex-row h-full">
             <SideMenu createNote={$note.createNote} />
-            <Tasks setSelectedNote={$note.setSelectedNote} notes={$note.notes} />
+            <Tasks selectedNote={$note.selectedNote} setSelectedNote={$note.setSelectedNote} notes={$note.notes} />
             <Edit selectedNote={$note.selectedNote} notes={$note.notes} setSelectedNote={$note.setSelectedNote} updateNote={$note.updateNote} deleteNote={$note.deleteNote} />
         </div>
     )

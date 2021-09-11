@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { Note } from './Note'
 
-export const Tasks = ({ setSelectedNote, notes }) => {
+export const Tasks = ({ setSelectedNote, notes, selectedNote }) => {
 
     const [search, setSearch] = useState("")
 
@@ -10,12 +11,8 @@ export const Tasks = ({ setSelectedNote, notes }) => {
                 <input type="search" className="w-full border-2 border-gray-200 rounded-lg" value={search} onChange={({ target: { value } }) => setSearch(value)} />
 
             </div>
-            
-            {notes.filter(note => note.noteTitle.includes(search)).map(note => <div onClick={() => setSelectedNote(note.createdAt)} className="w-full h-16 flex flex-col justify-center bg-white px-2 hover:bg-gray-100 relative group border-b">
-                <b>{note.noteTitle}</b>
-                <p>{note.note}</p>
-                <div className="absolute right-0 opacity-0 group-hover:opacity-100">{">"}</div>
-            </div>)}
+
+            {notes.filter(note => note.noteTitle.includes(search)).map(note => <Note key={note.createdAt} selectedNote={selectedNote} setSelectedNote={setSelectedNote} note={note} />)}
         </div>
     )
 }
