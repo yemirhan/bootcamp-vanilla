@@ -1,8 +1,8 @@
 const initialState = {
-    notes: [],
+    notes: JSON.parse(localStorage.getItem("notes") || "[]"),
     selectedNote: {},
-    appInitialized: false
-
+    appInitialized: false,
+    editOn: false
 }
 
 const reducer = (state = initialState, { type, payload }) => {

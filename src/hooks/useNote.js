@@ -6,12 +6,6 @@ export const useNote = () => {
     const [selectedNote, setSelectedNote] = useState(null)
     const dispatch = useDispatch()
     const $notes = useSelector(state => state.$notes)
-    useEffect(() => {
-        if (!$notes.appInitialized) dispatch($get_notes(JSON.parse(localStorage.getItem("notes") || "[]")))
-        return () => {
-            dispatch($get_notes([]))
-        }
-    }, [])
     const saveNoteToStorage = (n) => {
         localStorage.setItem("notes", JSON.stringify(n))
     }

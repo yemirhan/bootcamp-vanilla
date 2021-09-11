@@ -1,14 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { useNote } from '../../../hooks/useNote'
+import { Button } from './Button'
+import { NoteArea } from './NoteArea'
+import { NoteFooter } from './NoteFooter'
+import { TitleBar } from './TitleBar'
 
-export const Note = ({ setSelectedNote, note, selectedNote }) => {
+export const Note = ({ match: { params: { id } } }) => {
+    const [note, setNote] = useState({})
+    const $notes = useSelector(state => state.$notes)
     const history = useHistory()
-    console.log(note);
+    const $n = useNote()
+    useEffect(() => {
+        setNote(($notes.notes || []).find(d => d.createdAt === parseInt(id)))
+        return () => {
+            setNote({})
+        }
+    }, [id, $notes.notes])
+    if (!note) return <div className="w-full h-screen bg-white flex flex-col items-center justify-center space-y-2">
+        <p className="font-semibold text-xl">Bu not mevcut değil.</p>
+        <Button type="primary">Yeni Not Oluştur</Button>
+    </div>
+
     return (
-        <div onClick={() => history.replace(`/note/${note.createdAt}`)} className={`w-full h-16 flex transition-all flex-col justify-center px-2 ${note.createdAt === selectedNote?.createdAt ? "bg-gray-200" : "bg-white hover:bg-gray-100"}  relative group border-b`}>
-            <b>{note.noteTitle}</b>
-            <p>{note.note}</p>
-            <div className="absolute right-5 opacity-0 group-hover:opacity-40 transition-all font-semibold text-xl">{">"}</div>
+        <div className="w-full h-screen bg-gray-700 flex flex-col">
+            <TitleBar setSelectedNote={() => history.push("/")} note={note} setNote={setNote} />
+            <NoteArea note={note} setNote={setNote} />
+            <NoteFooter note={note} deleteNote={$n.deleteNote} updateNote={$n.updateNote} />
         </div>
     )
 }

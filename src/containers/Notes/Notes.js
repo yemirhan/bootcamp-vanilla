@@ -6,7 +6,7 @@ import { Tasks } from './components/Tasks'
 
 export const Notes = () => {
     const $note = useNote()
-
+    
     return (
         <div className="flex flex-row h-full">
             <SideMenu createNote={$note.createNote} />

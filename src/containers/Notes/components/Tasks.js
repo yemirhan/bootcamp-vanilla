@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Note } from './Note'
+import { NoteSM } from './NoteSM'
 import { NoteSearch } from './NoteSearch'
 
 export const Tasks = ({ setSelectedNote, notes = [], selectedNote }) => {
@@ -10,9 +10,9 @@ export const Tasks = ({ setSelectedNote, notes = [], selectedNote }) => {
             <NoteSearch search={search} setSearch={setSearch} />
             {notes
                 .filter(note => note.noteTitle.includes(search))
-                .sort(e => 0- e.createdAt)
+                .sort(e => 0 - e.createdAt)
                 .map(note => (
-                    <Note
+                    <NoteSM
                         key={note.createdAt}
                         selectedNote={selectedNote}
                         setSelectedNote={setSelectedNote}
