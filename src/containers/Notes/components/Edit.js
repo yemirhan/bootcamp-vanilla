@@ -14,7 +14,7 @@ export const Edit = ({ selectedNote, notes = [], setSelectedNote = () => { }, up
     if (!note?.createdAt) return <div className="w-full h-screen bg-white flex items-center justify-center">Sol taraftan bir not seçiniz.</div>
     return (
         <div className="w-full h-screen bg-gray-700 flex flex-col">
-            <TitleBar setSelectedNote={setSelectedNote} />
+            <TitleBar setSelectedNote={setSelectedNote} note={note} setNote={setNote} />
             <NoteArea note={note} setNote={setNote} />
             <NoteFooter note={note} deleteNote={deleteNote} updateNote={updateNote} />
         </div>
