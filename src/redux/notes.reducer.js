@@ -23,6 +23,8 @@ const reducer = (state = initialState, { type, payload }) => {
             return { ...state, notes: [...payload] }
         case "MENU":
             return { ...state, isMenuOpen: !state.isMenuOpen }
+        case "EDIT":
+            return { ...state, editOn: !state.editOn }
         default:
             return state
     }
@@ -37,3 +39,4 @@ export const $select_note = (notes) => ({ type: "NOTE_SELECTED", payload: notes 
 export const $unselect_note = (notes) => ({ type: "NOTE_UNSELECTED", payload: {} })
 export const $update_note = (notes) => ({ type: "UPDATE_NOTE", payload: notes })
 export const $menu = (notes) => ({ type: "MENU" })
+export const $edit = (notes) => ({ type: "EDIT" })

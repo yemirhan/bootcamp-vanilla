@@ -10,7 +10,7 @@ export const ViewPanel = ({ selectedNote, notes = [], setSelectedNote = () => { 
         <Switch>
             <Route path={"/"} exact render={(props) => <div className="w-full h-screen bg-white flex items-center justify-center">Sol taraftan bir not seçiniz.</div>} />
             <Route path={"/note/:id"} render={(props) => <Note {...props} />} />
-            <Route path={"/create"} render={(props) => <div>c</div>} />
+            <Route path={"/create"} render={(props) => <Note {...props} />} />
         </Switch>
     </div>
 }
