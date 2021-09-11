@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const useNote = () => {
     const [notes, setNotes] = useState([])
@@ -13,11 +13,13 @@ export const useNote = () => {
         localStorage.setItem("notes", JSON.stringify(n))
     }
     const updateNote = (createdAt, note, title) => {
+        if (title === "") { alert("Task adı mevcut değil!"); return null }
         const _notes = [...notes]
         _notes.splice(notes.findIndex(e => e.createdAt === createdAt), 1, { createdAt, note, noteTitle: title })
         setNotes(() => { saveNoteToStorage([..._notes]); return [..._notes] })
     }
     const createNote = () => {
+        if (notes.filter(n => n.noteTitle === "").length > 0) { alert("Boş olan bir task mevcut!"); return null }
         const cAt = Date.now()
         setNotes(noteList => {
             saveNoteToStorage([...noteList, { noteTitle: "", note: "", createdAt: cAt }]);

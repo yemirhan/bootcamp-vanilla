@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNote } from '../../hooks/useNote'
 import { Edit } from './components/Edit'
 import { SideMenu } from './components/SideMenu'
