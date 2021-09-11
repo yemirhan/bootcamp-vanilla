@@ -3,7 +3,6 @@ import { Note } from './Note'
 import { NoteSearch } from './NoteSearch'
 
 export const Tasks = ({ setSelectedNote, notes, selectedNote }) => {
-
     const [search, setSearch] = useState("")
 
     return (
