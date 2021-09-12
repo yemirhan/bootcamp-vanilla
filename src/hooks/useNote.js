@@ -16,7 +16,6 @@ export const useNote = () => {
         localStorage.setItem("notes", JSON.stringify(n))
     }
     const updateNote = (createdAt, note, title) => {
-        console.log(createdAt, note, title);
         if (title === "") { alert("Task adı mevcut değil!"); return null }
         const _notes = [...notes]
         _notes.splice(notes.findIndex(e => e.createdAt === createdAt), 1, { createdAt, note, noteTitle: title })

@@ -15,8 +15,7 @@ export const EditArea = ({ match: { params: { id } } }) => {
             setNote({})
         }
     }, [notes, id])
-    console.log(note);
-    if (!note?.createdAt) return <div className="w-full h-screen bg-white flex items-center justify-center">Sol taraftan bir not seçiniz.</div>
+    if (!note?.createdAt) return <div className="w-full h-screen bg-white flex items-center justify-center">Bu not mevcut değil :(</div>
     return (
         <div className="w-full h-screen bg-gray-700 flex flex-col">
             <TitleBar setSelectedNote={setSelectedNote} note={note} setNote={setNote} />
