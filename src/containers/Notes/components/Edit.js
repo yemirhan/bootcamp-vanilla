@@ -4,15 +4,7 @@ import {
     Route,
 } from "react-router-dom";
 import { EditArea } from './EditArea';
-export const Edit = ({ selectedNote, notes = [], setSelectedNote = () => { }, updateNote = () => { }, deleteNote = () => { } }) => {
-    const [note, setNote] = useState({})
-    useEffect(() => {
-        setNote(selectedNote ? selectedNote : {})
-        return () => {
-            setNote({})
-        }
-    }, [selectedNote])
-
+export const Edit = () => {
     return (<div className="w-full h-screen bg-white flex items-center justify-center">
         <Switch>
             <Route path={"/notes/:id"} render={props => <EditArea {...props} />} />

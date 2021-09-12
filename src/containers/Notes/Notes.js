@@ -1,17 +1,19 @@
 import React from 'react'
+import { useNoteProvider } from '../../contexts/NotesProvider'
 import { useNote } from '../../hooks/useNote'
 import { Edit } from './components/Edit'
 import { SideMenu } from './components/SideMenu'
 import { Tasks } from './components/Tasks'
 
 export const Notes = () => {
-    const $note = useNote()
+    const { createNote, selectedNote, notes, setSelectedNote, updateNote, deleteNote } = useNoteProvider()
+
 
     return (
         <div className="flex flex-row h-full">
-            <SideMenu createNote={$note.createNote} />
-            <Tasks selectedNote={$note.selectedNote} setSelectedNote={$note.setSelectedNote} notes={$note.notes} />
-            <Edit selectedNote={$note.selectedNote} notes={$note.notes} setSelectedNote={$note.setSelectedNote} updateNote={$note.updateNote} deleteNote={$note.deleteNote} />
+            <SideMenu createNote={createNote} />
+            <Tasks selectedNote={selectedNote} setSelectedNote={setSelectedNote} notes={notes} />
+            <Edit selectedNote={selectedNote} notes={notes} setSelectedNote={setSelectedNote} updateNote={updateNote} deleteNote={deleteNote} />
         </div>
     )
 }

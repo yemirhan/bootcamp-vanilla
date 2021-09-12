@@ -4,8 +4,9 @@ const NotesContext = React.createContext();
 export const useNoteProvider = () => {
     return useContext(NotesContext);
 };
-export const AuthProvider = ({ children }) => {
+export const NotesProvider = ({ children }) => {
     const [notes, setNotes] = useState([])
+    const [selectedNote, setSelectedNote] = useState(null)
     useEffect(() => {
         setNotes(JSON.parse(localStorage.getItem("notes") || "[]"))
         return () => {
@@ -13,8 +14,40 @@ export const AuthProvider = ({ children }) => {
         }
     }, []);
 
+    const saveNoteToStorage = (n) => {
+        localStorage.setItem("notes", JSON.stringify(n))
+    }
+    const updateNote = (createdAt, note, title) => {
+        if (title === "") { alert("Task adı mevcut değil!"); return null }
+        const _notes = [...notes]
+        _notes.splice(notes.findIndex(e => e.createdAt === createdAt), 1, { createdAt, note, noteTitle: title })
+        setNotes(_notes)
+        setNotes(() => { saveNoteToStorage([..._notes]); return [..._notes] })
+    }
+    const createNote = () => {
+        if (notes.filter(n => n.noteTitle === "").length > 0) { alert("Boş olan bir task mevcut!"); return null }
+        const cAt = Date.now()
+        setNotes(noteList => {
+            saveNoteToStorage([...noteList, { noteTitle: "", note: "", createdAt: cAt }]);
+            return [...noteList, { noteTitle: "", note: "", createdAt: cAt }]
+        })
+        setSelectedNote({ noteTitle: "", note: "", createdAt: cAt })
+    }
+    const deleteNote = (createdAt) => {
+        setSelectedNote(null)
+        setNotes(n => {
+            saveNoteToStorage([...n.filter(d => d.createdAt !== createdAt)]);
+            return [...n.filter(d => d.createdAt !== createdAt)]
+        })
+
+    }
     const value = {
         notes,
+        updateNote,
+        createNote,
+        deleteNote,
+        selectedNote,
+        setSelectedNote
     };
     return <NotesContext.Provider value={value}>{children}</NotesContext.Provider>;
 };
