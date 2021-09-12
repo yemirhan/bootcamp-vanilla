@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 
 export const useNote = () => {
     const [notes, setNotes] = useState([])
     const [selectedNote, setSelectedNote] = useState(null)
-    const history = useHistory()
     useEffect(() => {
         setNotes(JSON.parse(localStorage.getItem("notes") || "[]"))
         return () => {

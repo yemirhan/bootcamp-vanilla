@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState } from 'react'
 import { useNoteProvider } from '../../../contexts/NotesProvider'
-import { Note } from './Note'
-import { NoteSearch } from './NoteSearch'
+import { NotePreview } from '../components/NotePreview'
+import { NoteSearch } from '../components/NoteSearch'
 
-export const Tasks = ({ setSelectedNote, selectedNote }) => {
+export const Tasks = () => {
+    const { notes, selectedNote, setSelectedNote } = useNoteProvider()
     const [search, setSearch] = useState("")
-    const { notes } = useNoteProvider()
 
     return (
         <div className="w-96 bg-white h-screen flex flex-col border-r border-gray-100">
@@ -15,7 +14,7 @@ export const Tasks = ({ setSelectedNote, selectedNote }) => {
                 .filter(note => note.noteTitle.includes(search))
                 .sort(e => 0 - e.createdAt)
                 .map(note => (
-                    <Note
+                    <NotePreview
                         key={note.createdAt}
                         selectedNote={selectedNote}
                         setSelectedNote={setSelectedNote}

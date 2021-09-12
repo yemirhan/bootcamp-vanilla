@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
     Switch,
     Route,
 } from "react-router-dom";
-import { EditArea } from './EditArea';
+import { EditArea } from '../components/EditArea';
 export const Edit = () => {
     return (<div className="w-full h-screen bg-white flex items-center justify-center">
         <Switch>

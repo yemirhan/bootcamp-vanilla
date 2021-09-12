@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNoteProvider } from '../../../contexts/NotesProvider'
 import pencil from '../assets/Ei-pencil.svg'
-export const SideMenu = ({createNote = ( ) => {}}) => {
+export const SideMenu = () => {
+    const { createNote } = useNoteProvider()
     return (
         <div className="w-20 h-screen bg-gray-200 py-2">
             <img src={pencil} alt="pencil" />
