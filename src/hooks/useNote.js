@@ -8,7 +8,7 @@ export const useNote = () => {
     useEffect(() => {
         setNotes(JSON.parse(localStorage.getItem("notes") || "[]"))
         return () => {
-            setNotes()
+            setNotes([])
         }
     }, [])
 
