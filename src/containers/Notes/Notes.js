@@ -1,7 +1,7 @@
 import React from 'react'
-import { Edit } from './modules/Edit'
-import { SideMenu } from './modules/SideMenu'
-import { Tasks } from './modules/Tasks'
+import { Edit } from './layout/Edit'
+import { SideMenu } from './layout/SideMenu'
+import { Tasks } from './layout/Tasks'
 
 export const Notes = () => {
     return (

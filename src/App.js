@@ -1,10 +1,14 @@
+import { BrowserRouter as Router } from "react-router-dom";
 import { Notes } from "./containers/Notes/Notes";
+import { NotesProvider } from "./contexts/NotesProvider";
 
 const App = () => {
   return (
-    <div className="App">
-      <Notes />
-    </div>
+    <Router>
+      <NotesProvider>
+        <Notes />
+      </NotesProvider>
+    </Router>
   );
 }
 
