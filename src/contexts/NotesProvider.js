@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const NotesContext = React.createContext();
 export const useNoteProvider = () => {
@@ -7,6 +8,7 @@ export const useNoteProvider = () => {
 export const NotesProvider = ({ children }) => {
     const [notes, setNotes] = useState([])
     const [selectedNote, setSelectedNote] = useState(null)
+    const history = useHistory()
     useEffect(() => {
         setNotes(JSON.parse(localStorage.getItem("notes") || "[]"))
         return () => {
@@ -32,6 +34,7 @@ export const NotesProvider = ({ children }) => {
             return [...noteList, { noteTitle: "", note: "", createdAt: cAt }]
         })
         setSelectedNote({ noteTitle: "", note: "", createdAt: cAt })
+        history.push(`/notes/${cAt}`)
     }
     const deleteNote = (createdAt) => {
         setSelectedNote(null)

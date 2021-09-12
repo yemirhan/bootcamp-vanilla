@@ -7,12 +7,12 @@ import {
 import { NotesProvider } from './contexts/NotesProvider';
 
 ReactDOM.render(
-  <NotesProvider>
-    <Router>
+  <Router>
+    <NotesProvider>
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </Router>
-  </NotesProvider>,
+    </NotesProvider>
+  </Router>,
   document.getElementById('root')
 );

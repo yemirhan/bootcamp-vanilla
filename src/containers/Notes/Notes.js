@@ -13,7 +13,7 @@ export const Notes = () => {
         <div className="flex flex-row h-full">
             <SideMenu createNote={createNote} />
             <Tasks selectedNote={selectedNote} setSelectedNote={setSelectedNote} notes={notes} />
-            <Edit selectedNote={selectedNote} notes={notes} setSelectedNote={setSelectedNote} updateNote={updateNote} deleteNote={deleteNote} />
+            <Edit />
         </div>
     )
 }
